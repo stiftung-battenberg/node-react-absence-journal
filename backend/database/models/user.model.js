@@ -21,18 +21,10 @@ module.exports = (sequelize) => {
       allowNull: false,
       type: DataTypes.STRING,
     },
-    token: {
-      type: DataTypes.STRING
-    },
     isAdmin: {
       allowNull: false,
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    resetPass: {
-      allowNull: false,
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
-    }
 	});
 };

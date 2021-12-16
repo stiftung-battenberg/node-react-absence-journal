@@ -8,7 +8,8 @@ const sequelize = new Sequelize('absence-journal-manager', 'root', '', {
 
 const modelDefiners = [
 	require('./models/user.model'),
-    require('./models/absence.model')
+    require('./models/absence.model'),
+	require('./models/resetToken.model')
 	// Add more models here...
 	// require('./models/item'),
 ]
@@ -20,6 +21,6 @@ for (const modelDefiner of modelDefiners) {
 
 relationUserAbsence(sequelize)
 
-sequelize.sync();
+sequelize.sync({ alter: true });
 
 module.exports = sequelize
