@@ -2,12 +2,14 @@
 import { useState } from 'react'
 import axios from 'axios'
 
+import config from "../../config.json"
+
 export default function ResetPassword() {
   const [ email, setEmail ] = useState()
    
   function handleSubmit(e) {
     e.preventDefault();
-    axios.post('http://localhost:8080/api/user/reset-password', {
+    axios.post(`${config.API_DOMAIN}/api/user/reset-password`, {
       email: email
     }).then(res => {
       console.log(res)

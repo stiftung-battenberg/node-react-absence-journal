@@ -39,11 +39,13 @@ module.exports = (app) => {
         }
 
         res.cookie('token', user.token, { httpOnly: true, expires: new Date(Date.now() + 3600000)})
-        
+        res.cookie('id', user.id)
+        res.cookie('isAdmin', user.isAdmin)
+
         return res.status(200).json(user);
     })
 
-    app.get('/api/logedin', async (req, res) => {
+    app.get('/api/loggedin', async (req, res) => {
         const token = req.body.token || req.query.token || req.cookies.token || req.headers["x-access-token"];
         if (!token) {
             return res.status(200).send(false);

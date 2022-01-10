@@ -2,7 +2,6 @@ const { DataTypes } = require("sequelize/dist")
 
 module.exports = (sequelize) => {
 	sequelize.define('user', {
-
 		id: {
 			allowNull: false,
 			autoIncrement: true,
@@ -17,14 +16,17 @@ module.exports = (sequelize) => {
 				is: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 			}
 		},
-    password: {
-      allowNull: false,
-      type: DataTypes.STRING,
-    },
-    isAdmin: {
-      allowNull: false,
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
-    },
-	});
-};
+		name: {
+			type: DataTypes.STRING
+		},
+		password: {
+			allowNull: false,
+			type: DataTypes.STRING,
+		},
+		isAdmin: {
+			allowNull: false,
+			type: DataTypes.BOOLEAN,
+			defaultValue: false
+    	},
+	})
+}

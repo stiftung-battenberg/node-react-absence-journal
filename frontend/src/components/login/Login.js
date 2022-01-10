@@ -1,13 +1,20 @@
 import { useState } from "react"
 import axios from 'axios'
 
+import ChangeTranslation from "../ChangeTranslation"
+import { useTranslation } from "react-i18next"
+
+import config from "../../config.json"
+
 axios.defaults.withCredentials = true
 
 export default function Login (props) {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [error, setError] = useState()
-  
+
+    const { t, i18n } = useTranslation();
+
     function handleSubmit (e) { 
         setError("")
         e.preventDefault()
@@ -19,10 +26,10 @@ export default function Login (props) {
         }
 
 
-        axios.post('http://localhost:8080/api/login', data).then(() =>{
+        axios.post(`${config.API_DOMAIN}/api/login`, data).then(() =>{
             props.setLoggedIn(true)
         }).catch(error => {
-            setError("Wrong credentials")
+            setError(t("Wrong Credentials"))
         })
     }
 
@@ -31,8 +38,8 @@ export default function Login (props) {
             <div className="h-screen flex">
                 <div className="flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center">
                     <div>
-                    <h1 className="text-white font-bold text-4xl font-sans">Absence & Journal</h1>
-                    <p className="text-white mt-1">An app to handle you absences and your jounal</p>
+                    <h1 className="text-white font-bold text-4xl font-sans">{t("Absence & Journal")}</h1>
+                    <p className="text-white mt-1">{t("An app to handle your absences and your jounal")}</p>
         
                     </div>
                 </div>
@@ -58,6 +65,7 @@ export default function Login (props) {
                         <a href="/reset"><span className="text-sm ml-2 hover:text-blue-500 cursor-pointer">Forgot Password ?</span></a>
                     </form>
                 </div>
+                <ChangeTranslation />
                 </div>
         </div>
     )

@@ -1,6 +1,8 @@
 import { useState } from "react"
 import axios from 'axios'
 
+import config from "../../config.json"
+
 axios.defaults.withCredentials = true
 
 export default function ResetPasswordForm () {
@@ -18,7 +20,7 @@ export default function ResetPasswordForm () {
             const queryString = window.location.search
             const urlParams = new URLSearchParams(queryString)
 
-            axios.put('http://localhost:8080/api/user/reset-password', {
+            axios.put(`${config.API_DOMAIN}/api/user/reset-password`, {
                 password: pass2,
                 token: urlParams.get('token'),
                 email: urlParams.get('email')

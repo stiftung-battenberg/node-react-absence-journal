@@ -7,18 +7,19 @@ axios.defaults.withCredentials = true
 export default function CreateUser (props) {
     const [openModal, setopenModal] = useState(false)
     const [mail, setmail] = useState("")
+    const [name, setname] = useState("")
+    const [isAdmin, setisAdmin] = useState(false)
 
     function handleSubmit (e) { 
         e.preventDefault()
-        
-        props.createUser(mail)
+        props.createUser(mail, name, isAdmin)
   
         setopenModal(false)
     }
 
     return (
         <div>
-            <button className="block px-16 bg-green-600 py-2 mt-12 rounded-2xl text-white font-semibold mb-2" onClick={()=>{setopenModal(! openModal)}}>Create User</button>
+            <button className="block px-16 bg-green-600 py-2 rounded-2xl text-white font-semibold m-4" onClick={()=>{setopenModal(! openModal)}}>Create User</button>
            <div className={`${openModal ? "block" : "hidden"} absolute w-screen h-screen bg-gray-900 top-0 left-0 opacity-75`}></div>
             <div id="default-modal" aria-hidden="true" className={`fixed left-0 right-0 z-50 items-center justify-center ${openModal ? "flex" : "hidden"} overflow-x-hidden overflow-y-auto h-modal md:h-full top-4 md:inset-0`}>
                 
@@ -35,8 +36,17 @@ export default function CreateUser (props) {
                         <form onSubmit={(e)=>{handleSubmit(e)}}>
                             <div className="p-6 space-y-6">
                                 <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-                                    <input className="pl-2 outline-none border-none w-full" type="text" name="" id="" placeholder="Email Address" onChange={(e) => {setmail(e.target.value)}}/>
+                                    <input className="pl-2 outline-none border-none w-full" type="text" placeholder="Name" onChange={(e) => {setname(e.target.value)}}/>
                                 </div>
+                            </div>
+                            <div className="p-6 space-y-6">
+                                <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+                                    <input className="pl-2 outline-none border-none w-full" type="text" placeholder="Email Address" onChange={(e) => {setmail(e.target.value)}}/>
+                                </div>
+                            </div>
+                            <div className="p-6 space-y-6 flex items-baseline ">
+                                <label className=' text-gray-400'>Is admin :</label>
+                                <input className="pl-2 m-2" type="checkbox" onChange={(e) => {setisAdmin(e.target.checked)}}/>
                             </div>
 
                             <div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">

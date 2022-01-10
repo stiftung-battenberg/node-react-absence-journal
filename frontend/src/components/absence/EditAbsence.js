@@ -1,29 +1,36 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import axios from 'axios'
 
-import { FaPlus } from 'react-icons/fa'
+import { FaEdit } from "react-icons/fa" 
 
 axios.defaults.withCredentials = true
 
-export default function CreateAbsence (props) {
+export default function EditAbsence (props) {
     const [openModal, setopenModal] = useState(false)
     const [from, setfrom] = useState("")
     const [to, setto] = useState("")
     const [motif, setmotif] = useState("")
     const [comment, setcomment] = useState("")
-
+    
     function handleSubmit (e) { 
         e.preventDefault()
         
-        props.createAbsence(from, to, motif, comment)
+        props.editAbsence(props.id , from, to, motif, comment)
   
         setopenModal(false)
     }
 
+    useEffect(() => {
+        setto(props.to)
+        setfrom(props.from)
+        setmotif(props.motif)
+        setcomment(props.comment)
+    }, [])
+
     return (
         <div>
-            <button className="block p-4 shadow bg-green-600 rounded-full text-white font-semibold m-4" onClick={()=>{setopenModal(! openModal)}}><FaPlus/></button>
+           <button className="inline-block p-2 bg-gray-50 rounded-full font-semibold m-1" onClick={()=>{setopenModal(! openModal)}}><FaEdit /></button>
            <div className={`${openModal ? "block" : "hidden"} absolute w-screen h-screen bg-gray-900 top-0 left-0 opacity-75`}></div>
             <div id="default-modal" aria-hidden="true" className={`fixed left-0 right-0 z-50 items-center justify-center ${openModal ? "flex" : "hidden"} overflow-x-hidden overflow-y-auto h-modal md:h-full top-4 md:inset-0`}>
                 
@@ -39,18 +46,21 @@ export default function CreateAbsence (props) {
                         </div>
                         <form onSubmit={(e)=>{handleSubmit(e)}}>
                             <div className="p-3 mt-12">
+                                <p className="text-sm font-normal text-gray-600 mb-2">From</p>
                                 <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-                                    <input className="pl-2 outline-none border-none w-full" type="datetime-local" placeholder="From" onChange={(e) => {setfrom(e.target.value)}}/>
+                                    <input className="pl-2 outline-none border-none w-full" type="datetime-local" placeholder="From" value={from} onChange={(e) => {setfrom(e.target.value)}}/>
                                 </div>
                             </div>
                             <div className="p-3">
+                                <p className="text-sm font-normal text-gray-600 mb-2">To</p>
                                 <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-                                    <input className="pl-2 outline-none border-none w-full" type="datetime-local" placeholder="To" onChange={(e) => {setto(e.target.value)}}/>
+                                    <input className="pl-2 outline-none border-none w-full" type="datetime-local" placeholder="To" value={to} onChange={(e) => {setto(e.target.value)}}/>
                                 </div>
                             </div>
                             <div className="p-3">
+                                <p className="text-sm font-normal text-gray-600 mb-2">Motif</p>
                                 <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-                                    <select className="pl-2 outline-none border-none w-full" placeholder="Email Address" onChange={(e) => {setmotif(e.target.value)}}>
+                                    <select className="pl-2 outline-none border-none w-full" placeholder="Email Address" value={motif} onChange={(e) => {setmotif(e.target.value)}}>
                                         <option>Select a value</option>
                                         <option value="Doctor">Doctor</option>
                                         <option value="Therapy">Therapy</option>
@@ -62,8 +72,9 @@ export default function CreateAbsence (props) {
                                 </div>
                             </div>
                             <div className="p-3 mb-12">
+                            <p className="text-sm font-normal text-gray-600 mb-2">Comment</p>
                                 <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-                                    <textarea className="pl-2 outline-none border-none w-full resize-none" rows="6"  placeholder="Comment" onChange={(e) => {setcomment(e.target.value)}}/>
+                                    <textarea className="pl-2 outline-none border-none w-full resize-none" rows="6"  placeholder="Comment" value={comment}  onChange={(e) => {setcomment(e.target.value)}}/>
                                 </div>
                             </div>
 
