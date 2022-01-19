@@ -31,9 +31,16 @@ const Nav = () => {
         <nav className="bg-gradient-to-tr from-blue-800 to-purple-700 text-white text-lg font-bold ">
             <ul className="flex gap-8 p-4 items-center ">
                 <h1 className="text-2xl p-8 grow">Absence & Journal</h1>
-                <li>
-                        <a href={`/user/${getCookie("id")}/absence`}>My Absence</a>
-                </li>
+                { getCookie("isAdmin") == "false" && 
+                    <li>
+                            <a href={`/user/${getCookie("id")}/absence`}>My Absence</a>
+                    </li>
+                }
+                { getCookie("isAdmin") == "false" && 
+                    <li>
+                            <a href={`/user/${getCookie("id")}/journalweek`}>My Journal</a>
+                    </li>
+                }
                 { getCookie("isAdmin") == "true" &&  
                     <li>
                         <a href="/">User</a>
@@ -42,6 +49,11 @@ const Nav = () => {
                 { getCookie("isAdmin") == "true" && 
                     <li>
                         <a href="/absences">Absences</a>
+                    </li>
+                }
+                { getCookie("isAdmin") == "true" && 
+                    <li>
+                        <a href="/journalweeks">Journals</a>
                     </li>
                 }
                 <li>

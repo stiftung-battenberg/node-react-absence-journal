@@ -7,6 +7,7 @@ const login = require('./routes/login')
 const resetPass = require('./routes/resetPassword')
 const users = require('./routes/users')
 const absence = require('./routes/absence') 
+const journal = require('./routes/journal') 
 
 const app = express()
 
@@ -20,5 +21,6 @@ login(app)
 resetPass(app)
 users(app)
 absence(app)
+journal(app)
 
 module.exports = app

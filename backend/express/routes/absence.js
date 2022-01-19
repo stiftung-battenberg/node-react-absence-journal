@@ -27,12 +27,11 @@ module.exports = (app) => {
 
     app.get("/api/absences", auth.verifyToken, auth.isAdmin, async (req, res) => {
         const absences = await models.absence.findAll({
-            include:  'validatedBy',
+            include: "user",
             where: {
                 validated: false
             }
         })
-
         return res.status(200).json(absences)
     })
 
@@ -107,4 +106,6 @@ module.exports = (app) => {
 
         res.status(200).send()
     })
+
+   
 }

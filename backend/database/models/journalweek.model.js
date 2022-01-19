@@ -12,6 +12,12 @@ module.exports = ( sequelize ) => {
             allowNull: false,
             type: DataTypes.TINYINT
         },
+        start : {
+            type: DataTypes.DATEONLY
+        },
+        finish : {
+            type: DataTypes.DATEONLY
+        },
         validated : {
             allowNull: false,
             type: DataTypes.BOOLEAN,

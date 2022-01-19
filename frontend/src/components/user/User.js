@@ -72,7 +72,7 @@ export default function User() {
                                     <td className="px-4 py-3">{user.name}</td>
                                     <td className="px-4 py-3">{user.email}</td>
                                     <td className="px-4 py-3"><a href={"/user/" + user.id + "/absence/"}><button className="block bg-indigo-600 py-2 px-16 rounded-2xl text-white font-semibold mb-2">Absence</button></a></td>
-                                    <td className="px-4 py-3"><a href=""></a><button className="block bg-indigo-600 py-2 px-16 rounded-2xl text-white font-semibold mb-2">Journal</button></td>
+                                    <td className="px-4 py-3"><a href={"/user/" + user.id + "/journalweek/"}><button className="block bg-indigo-600 py-2 px-16 rounded-2xl text-white font-semibold mb-2">Journal</button></a></td>
                                     <td className="px-4 py-3">{user.isAdmin ? <GrCheckboxSelected /> : <GrCheckbox />}</td>
                                     <td className="px-4 py-3"><ValidationModal icon={<FaTrash />} id={user.id} handleEvent={deleteUser} text="Delete User"/></td>
                                 </tr>

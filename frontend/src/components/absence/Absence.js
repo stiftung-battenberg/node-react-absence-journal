@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import moment from 'moment'
-import 'moment/locale/fr'
-import 'moment/locale/de'
-import 'moment/locale/en-gb'
 
 import CreateAbsence from "./CreateAbsence"
 import EditAbsence from './EditAbsence'

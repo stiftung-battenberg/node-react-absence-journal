@@ -10,10 +10,9 @@ module.exports = ( sequelize ) => {
 		},
         date : {
             allowNull: false,
-            type: DataTypes.DATE
+            type: DataTypes.DATEONLY
         },
         comment: {
-            allowNull: false,
             type: DataTypes.STRING
         },
         activity: {

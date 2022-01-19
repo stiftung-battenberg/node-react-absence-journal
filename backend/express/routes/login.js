@@ -42,7 +42,7 @@ module.exports = (app) => {
         res.cookie('id', user.id)
         res.cookie('isAdmin', user.isAdmin)
 
-        return res.status(200).json(user);
+        return res.status(200).json();
     })
 
     app.get('/api/loggedin', async (req, res) => {
