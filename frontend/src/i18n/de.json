@@ -12,5 +12,15 @@
     "Number of the week": "Wochennummer",
     "start": "Anfang",
     "finish": "Ende",
-    "Belongs To": "Gehört"
+    "Belongs To": "Gehört",
+    "My Absence": "Meine abwesenheiten",
+    "My Jounal": "Mein Tagesjournal",
+    "User": "Benutzer",
+    "Absences": "Abwensenheit",
+    "Journals": "Tagesjournal",
+    "Forgot Password ?": "Password vergessen ?",
+    "Reset Password": "Password zurücksetzen",
+    "Reset your password": "Ihr Password zurücksetzen",
+    "Enter your email": "Geben sie ihre email ein",
+    "Reset": "Zurücksetzen"
 }

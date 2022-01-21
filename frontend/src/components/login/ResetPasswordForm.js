@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from 'axios'
+import { useTranslation } from "react-i18next"
 
 import config from "../../config.json"
 
@@ -10,6 +11,8 @@ export default function ResetPasswordForm () {
     const [pass2, setPass2] = useState()
     const [error, seterror] = useState("")
     const [succeded, setsucceded] = useState(false)
+
+    const [ t , i18n ] = useTranslation()
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -41,7 +44,7 @@ export default function ResetPasswordForm () {
             <div className="h-screen flex">
                 <div className="flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center">
                     <div>
-                    <h1 className="text-white font-bold text-4xl font-sans">Reset</h1>
+                    <h1 className="text-white font-bold text-4xl font-sans">{t("Reset")}</h1>
                     <p className="text-white mt-1">Enter your new password</p>
         
                     </div>
@@ -61,6 +64,7 @@ export default function ResetPasswordForm () {
                         { succeded && <p className="text-green-500">The password has been changed</p> }
                     </form>
                 </div>
+
                 </div>
         </div>
     )

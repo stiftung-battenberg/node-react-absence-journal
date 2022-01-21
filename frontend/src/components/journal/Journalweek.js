@@ -58,7 +58,7 @@ export default function Journalweek() {
                         <td className="px-4 py-3">{t("start")}</td>
                         <td className="px-4 py-3">{t("finish")}</td>
                         <td className="px-4 py-3">{t("validated")}</td>
-                        <td className="px-4 py-3">Validated By</td>
+                        <td className="px-4 py-3">{t("Validated By")}</td>
                         <td className="px-4 py-3"></td>
                     </tr>
                 </thead>
@@ -70,11 +70,11 @@ export default function Journalweek() {
                                 <td className="px-4 py-3 border">{moment(journalweek.start).locale(i18n.language).format('LL')}</td>
                                 <td className="px-4 py-3 border">{moment(journalweek.finish).locale(i18n.language).format('LL')}</td>
                                 <td className="px-4 py-3 border">{journalweek.validated ? <GrCheckboxSelected /> : <GrCheckbox />}</td>
-                                <td className='px-4 py-3 border'></td>
+                                <td className='px-4 py-3 border'>{journalweek.validatedBy?.name}</td>
                                 <td className='px-4 py-3 border'>
                                     {!journalweek.validated && <ValidationModal icon={<GrCheckmark />} text="Validate Absence" handleEvent={validateJournalweek} id={journalweek.id}/> }
                                     <a href={`/journalweek/${journalweek.id}/journal`} className='inline-block p-2 bg-gray-50 rounded-full m-1 font-semibold'><FaEdit /></a>
-                                    {!journalweek.validated && <ValidationModal icon={<FaTrash />} text="Delete Absence" handleEvent={deleteJournalweek} id={journalweek.id}/>}
+                                    {!journalweek.validated && <ValidationModal icon={<FaTrash />} text="Delete Journal" handleEvent={deleteJournalweek} id={journalweek.id}/>}
                                 </td>
                             </tr>
                         )

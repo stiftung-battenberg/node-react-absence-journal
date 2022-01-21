@@ -75,7 +75,7 @@ export default function Journalweeks() {
                                 <td className='px-4 py-3 border'>
                                     {!journalweek.validated && <ValidationModal icon={<GrCheckmark />} text="Validate Absence" handleEvent={validateJournalweek} id={journalweek.id}/> }
                                     <a href={`/journalweek/${journalweek.id}/journal`} className='inline-block p-2 bg-gray-50 rounded-full m-1 font-semibold'><FaEdit /></a>
-                                    {!journalweek.validated && <ValidationModal icon={<FaTrash />} text="Delete Absence" handleEvent={deleteJournalweek} id={journalweek.id}/>}
+                                    {!journalweek.validated && <ValidationModal icon={<FaTrash />} text="Delete Journal" handleEvent={deleteJournalweek} id={journalweek.id}/>}
                                 </td>
                             </tr>
                         )

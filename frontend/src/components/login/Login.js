@@ -62,7 +62,7 @@ export default function Login (props) {
                         { error && <p className="text-red-500 mt-2">{error}</p> }
                         
                         <button type="submit" className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Login</button>
-                        <a href="/reset"><span className="text-sm ml-2 hover:text-blue-500 cursor-pointer">Forgot Password ?</span></a>
+                        <a href="/reset"><span className="text-sm ml-2 hover:text-blue-500 cursor-pointer">{t("Forgot Password ?")}</span></a>
                     </form>
                 </div>
                 <ChangeTranslation />

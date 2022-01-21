@@ -2,10 +2,12 @@
 import axios from "axios"
 
 import ChangeTranslation from "./ChangeTranslation"
+import { useTranslation } from "react-i18next"
 
 import config from "../config.json"
 
 const Nav = () => {
+    const { t, i18n } = useTranslation();
     
     function logout () {
         axios.get(`${config.API_DOMAIN}/api/logout`)
@@ -33,27 +35,27 @@ const Nav = () => {
                 <h1 className="text-2xl p-8 grow">Absence & Journal</h1>
                 { getCookie("isAdmin") == "false" && 
                     <li>
-                            <a href={`/user/${getCookie("id")}/absence`}>My Absence</a>
+                            <a href={`/user/${getCookie("id")}/absence`}>{t("My Absence")}</a>
                     </li>
                 }
                 { getCookie("isAdmin") == "false" && 
                     <li>
-                            <a href={`/user/${getCookie("id")}/journalweek`}>My Journal</a>
+                            <a href={`/user/${getCookie("id")}/journalweek`}>{t("My Journal")}</a>
                     </li>
                 }
                 { getCookie("isAdmin") == "true" &&  
                     <li>
-                        <a href="/">User</a>
+                        <a href="/">{t("User")}</a>
                     </li>
                 }
                 { getCookie("isAdmin") == "true" && 
                     <li>
-                        <a href="/absences">Absences</a>
+                        <a href="/absences">{t("Absences")}</a>
                     </li>
                 }
                 { getCookie("isAdmin") == "true" && 
                     <li>
-                        <a href="/journalweeks">Journals</a>
+                        <a href="/journalweeks">{t("Journals")}</a>
                     </li>
                 }
                 <li>
