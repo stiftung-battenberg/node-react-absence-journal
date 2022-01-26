@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
+import { FaPlus } from 'react-icons/fa' 
 
 axios.defaults.withCredentials = true
 
@@ -19,8 +20,8 @@ export default function CreateUser (props) {
 
     return (
         <div>
-            <button className="block px-16 bg-green-600 py-2 rounded-2xl text-white font-semibold m-4" onClick={()=>{setopenModal(! openModal)}}>Create User</button>
-           <div className={`${openModal ? "block" : "hidden"} absolute w-screen h-screen bg-gray-900 top-0 left-0 opacity-75`}></div>
+            <button className="block p-4 shadow bg-green-600 rounded-full text-white font-semibold m-4" onClick={()=>{setopenModal(! openModal)}}><FaPlus/></button>
+            <div className={`${openModal ? "block" : "hidden"} absolute w-screen h-screen bg-gray-900 top-0 left-0 opacity-75`}></div>
             <div id="default-modal" aria-hidden="true" className={`fixed left-0 right-0 z-50 items-center justify-center ${openModal ? "flex" : "hidden"} overflow-x-hidden overflow-y-auto h-modal md:h-full top-4 md:inset-0`}>
                 
                 <div className="relative w-full h-full max-w-2xl px-4 md:h-auto">

@@ -47,7 +47,6 @@ function Absence() {
 
     function getAbsence () {
         axios.get(`${config.API_DOMAIN}/api/user/${id}/absence`).then(res =>{
-            console.log(res.data)
             setabsences(res.data)
         }).catch(error => {
             console.log(error);

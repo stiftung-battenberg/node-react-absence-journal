@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { useState } from 'react'
-import '@themesberg/flowbite'
 import axios from "axios"
 
 import Login from "./components/login/Login"
