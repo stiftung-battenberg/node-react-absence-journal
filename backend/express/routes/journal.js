@@ -40,6 +40,17 @@ module.exports = (app) => {
         if(req.user == req.params.id || user.isAdmin ) {
             const { date } = req.body
 
+            const weekForUserAlreadyExist = await models.journalweek.findOne({
+                where : {
+                    weekNumber: moment(date,  "YYYYMMDD").week(),
+                    userId: req.params.id
+                }
+            })
+
+            if(weekForUserAlreadyExist) {
+                return res.status(400).send("Week number already in use !!")
+            }
+
             const journalweek = await models.journalweek.create({
                 weekNumber: moment(date,  "YYYYMMDD").week(),
                 start: moment(date,  "YYYYMMDD").startOf('week').add(1, 'day'), 

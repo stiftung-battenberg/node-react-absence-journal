@@ -13,7 +13,7 @@ export default function Login (props) {
     const [password, setPassword] = useState()
     const [error, setError] = useState()
 
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     function handleSubmit (e) { 
         setError("")

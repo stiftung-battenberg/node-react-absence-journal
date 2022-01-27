@@ -19,8 +19,8 @@ export default function CreateUser (props) {
     }
 
     return (
-        <div>
-            <button className="block p-4 shadow bg-green-600 rounded-full text-white font-semibold m-4" onClick={()=>{setopenModal(! openModal)}}><FaPlus/></button>
+        <>
+            <button className="inline-block p-4 shadow bg-green-600 rounded-full text-white font-semibold m-4" onClick={()=>{setopenModal(! openModal)}}><FaPlus/></button>
             <div className={`${openModal ? "block" : "hidden"} absolute w-screen h-screen bg-gray-900 top-0 left-0 opacity-75`}></div>
             <div id="default-modal" aria-hidden="true" className={`fixed left-0 right-0 z-50 items-center justify-center ${openModal ? "flex" : "hidden"} overflow-x-hidden overflow-y-auto h-modal md:h-full top-4 md:inset-0`}>
                 
@@ -58,6 +58,6 @@ export default function CreateUser (props) {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
 import config from "../../config.json" 
 import Nav from '../Nav'
-import CreateJournalWeek from './createJournalweek'
 import ValidationModal from '../ValidationModal'
 import moment from 'moment'
 
@@ -14,7 +12,6 @@ import {GrCheckboxSelected, GrCheckbox, GrCheckmark} from 'react-icons/gr'
 import {FaTrash, FaEdit} from 'react-icons/fa'
 
 export default function Journalweeks() {
-    const { id } = useParams()
     const [journalweeks, setjournalweeks] = useState([])
 
     const { t, i18n } = useTranslation();
@@ -23,13 +20,6 @@ export default function Journalweeks() {
         axios.get(`${config.API_DOMAIN}/api/journalweeks`).then(res => {
             setjournalweeks(res.data)
         })
-    }
-
-    function createJournalweek (date) {
-        console.log(date)
-        axios.post(`${config.API_DOMAIN}/api/user/${id}/journalweek` , { date }).then(res => {
-            getJournalweek()
-        })  
     }
     function validateJournalweek (id) {
         axios.put(`${config.API_DOMAIN}/api/journalweek/${id}/validate`).then(res => {

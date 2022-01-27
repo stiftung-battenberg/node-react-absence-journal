@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import moment from 'moment'
 import 'moment/locale/fr';
@@ -20,7 +19,6 @@ import ValidationModal from '../ValidationModal'
 axios.defaults.withCredentials = true
 
 function Absences() {
-    const { id } = useParams()
     const [absences, setabsences] = useState([])
 
     const { t, i18n } = useTranslation();

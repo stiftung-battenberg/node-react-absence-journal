@@ -7,15 +7,15 @@ import { useTranslation } from 'react-i18next'
 
 export default function ResetPassword() {
   const [ email, setEmail ] = useState()
-  
-  const [ t, i18n ] = useTranslation()
+  const [succeed, setsucceed] = useState("");
+  const  { t }  = useTranslation()
 
   function handleSubmit(e) {
     e.preventDefault();
     axios.post(`${config.API_DOMAIN}/api/user/reset-password`, {
       email: email
     }).then(res => {
-      console.log(res)
+      setsucceed(t("Check your mail, you received a mail with the reset link."))
     })
   } 
   return (
@@ -31,11 +31,12 @@ export default function ResetPassword() {
                         <h1 className="text-gray-800 font-bold text-2xl mb-1">{t("Reset your password")}</h1>
                         <p className="text-sm font-normal text-gray-600 mb-7">{t("Enter your email")}</p>
                         <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-                            <input className="pl-2 outline-none border-none" type="text" name="" id="" placeholder="Email Address" onChange={(e) => {setEmail(e.target.value)}}/>
+                            <input className="pl-2 outline-none border-none w-full" type="text" name="" id="" placeholder="Email Address" onChange={(e) => {setEmail(e.target.value)}}/>
                         </div>
                         <button type="submit" className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">{t("Send")}</button>
+                        <p className='text-green-700'>{succeed}</p>
                     </form>
-                </div>
+              </div>
         </div>
     </div>
   )

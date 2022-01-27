@@ -16,8 +16,21 @@ axios.defaults.withCredentials = true
 
 export default function User() {
     const [users, setusers] = useState([])
+    const [search, setsearch] = useState("");
 
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
+
+    function searchName(e){
+        setsearch()
+
+        const res = users.filter(user => user.name.includes(e.target.value) || user.email.includes(e.target.value))
+
+        if(e.target.value == "") {
+            getUser()
+        } else {
+            setusers(res)
+        }
+    }
 
     async function getUser() {
         axios.get(`${config.API_DOMAIN}/api/users`).then( res => {
@@ -53,6 +66,10 @@ export default function User() {
         <>
             <Nav/>
             <CreateUser createUser={createUser}/>
+
+            <div className="inline-flex items-center border-2 py-2 px-3 w-1/3 m-4 rounded-2xl mb-4">
+                <input type="text" className="pl-2 outline-none border-none w-full" placeholder={t("Search a value")} value={search} onChange={(e) => {searchName(e)}} />
+            </div>
             <section className="mx-auto">
                 <table className="items-center bg-transparent w-full border-collapse">
                     <thead>

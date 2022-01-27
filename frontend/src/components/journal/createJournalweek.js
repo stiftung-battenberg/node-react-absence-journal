@@ -12,7 +12,7 @@ export default function CreateJournalWeek (props) {
     const [openModal, setopenModal] = useState(false)
     const [date, setdate] = useState("")
 
-    const [ t , i18n ] = useTranslation()
+    const { t }  = useTranslation()
 
     function handleSubmit (e) { 
         e.preventDefault()

@@ -45,7 +45,7 @@ module.exports = (app) => {
 
             sendEmail(req.body.email, 
                 "Reset your password", 
-                'To reset your password, please click the link below.\n\nhttp://'+process.env.DOMAIN+'/user/reset-password?token='+encodeURIComponent(fpSalt)+'&email='+req.body.email)
+                `To reset your password, please click the link below.\n\n${process.env.CLIENT_HOST}/user/reset-password?token=${encodeURIComponent(fpSalt)}&email=${req.body.email}`)
 
         } else {
             return res.status(400).send("No user by that email")

@@ -12,7 +12,7 @@ export default function ResetPasswordForm () {
     const [error, seterror] = useState("")
     const [succeded, setsucceded] = useState(false)
 
-    const [ t , i18n ] = useTranslation()
+    const { t } = useTranslation()
 
     function handleSubmit(e) {
         e.preventDefault();

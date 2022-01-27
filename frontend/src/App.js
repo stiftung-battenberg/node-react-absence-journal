@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useState } from 'react'
 import axios from "axios"
 
@@ -16,7 +16,6 @@ axios.defaults.withCredentials = true
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
-  const [isAdmin, setisAdmin] = useState(false)
   
   axios.get("http://localhost:8080/api/loggedin").then(res => {
     setLoggedIn(res.data)
