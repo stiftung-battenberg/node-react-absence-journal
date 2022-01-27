@@ -1,5 +1,6 @@
 const { Sequelize, Model, DataTypes } = require('sequelize')
 const relations = require('./relations')
+const bcrypt = require('bcryptjs')
 require('dotenv').config();
 
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
@@ -24,7 +25,20 @@ for (const modelDefiner of modelDefiners) {
 
 relations(sequelize)
 
+
+
 sequelize.sync()
 sequelize.sync({ alter: true });
+
+// Create default User
+bcrypt.hash("Battenberg2021", 10).then(pass => {
+	sequelize.models.user.create({
+		email: "admin@admin.ch",
+		name: "admin",
+		isAdmin: true,
+		password: pass,
+	})
+}) 
+
 
 module.exports = sequelize
